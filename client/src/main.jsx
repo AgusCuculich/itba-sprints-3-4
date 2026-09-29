@@ -10,13 +10,18 @@ import './index.css'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 import { Home } from './pages/Home'
+import { Layout } from './components/Layout'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    element: <Layout />,
+    children: [
+      { path: '/', element: <Home /> },
+      // { path: '/productos', element: <Productos /> },
+      // { path: '/contacto', element: <Contacto /> },
+    ],
   },
-]);
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
