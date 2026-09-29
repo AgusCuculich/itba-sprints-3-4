@@ -14,6 +14,7 @@ export const productos = [
             capacidad: "6 compartimentos interiores"
         }
     },
+    
     {
         id: "biblioteca-recoleta",
         nombre: "Biblioteca Recoleta",
