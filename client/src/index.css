@@ -1,50 +1,36 @@
 @import "tailwindcss";
 
-@theme {
-  /* Tipografias */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+@theme static {
+    /* Tipografias */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-serif: "Playfair Display", Georgia, serif;
 
-  /* Paleta de colores */
-  --color-siena: #A0522D;              /* Marca principal, titulos */
-  --color-salvia: #87A96B;             /* Acento secundario, sustentabilidad */
-  --color-alabastro: #F5E6D3;          /* Fondo principal */
-  --color-vara-de-oro: #D4A437;        /* Detalles premium */
-  --color-rosa-polvoriento: #C47A6D;   /* Acentos suaves */
-  --color-carbon: #1A1A1A;             /* Texto principal */
+    /* Paleta de colores */
+    --color-siena: #A0522D;              /* Marca principal, titulos */
+    --color-salvia: #87A96B;             /* Acento secundario, sustentabilidad */
+    --color-alabastro: #F5E6D3;          /* Fondo principal */
+    --color-vara-de-oro: #D4A437;        /* Detalles premium */
+    --color-rosa-polvoriento: #C47A6D;   /* Acentos suaves */
+    --color-carbon: #1A1A1A;             /* Texto principal */
 
-  /* Espaciados personalizados */
-  --spacing-interno: 1rem;
-  --spacing-secciones: 2rem;
-  --spacing-chico: 0.5rem;
+    /* Espaciados personalizados */
+    --spacing-interno: 1rem;
+    --spacing-secciones: 2rem;
+    --spacing-chico: 0.5rem;
 
-  /* Bordes */
-  --radius-btn: 0.25rem;
+    /* Bordes */
+    --radius-btn: 0.25rem;
+
+    /* Tamaños de texto (generan text-h1, text-h2, ...) */
+    --text-h1: clamp(2rem, 5vw + 1rem, 3rem);
+    --text-h2: clamp(1.6rem, 3.5vw + 1rem, 2.25rem);
+    --text-h3: clamp(1.35rem, 2.5vw + 0.8rem, 1.75rem);
+    --text-h4: clamp(1.1rem, 1.5vw + 0.8rem, 1.25rem);
+    --text-h5: clamp(1rem, 1vw + 0.8rem, 1.125rem);
+    --text-small: 14px;
 }
 
 @layer base {
-  :root {
-    --siena-tostado: #A0522D;
-    --verde-salvia: #87A96B;
-    --alabastro-calido: #F5E6D3;
-    --vara-de-oro: #D4A437;
-    --rosa-polvoriento: #C47A6D;
-    --negro-carbon: #1A1A1A;
-
-    --espaciado-interno: 1rem;
-    --espaciado-secciones: 2rem;
-    --espaciado-chico: 0.5rem;
-
-    --btn-radius: 0.25rem;
-
-    --h1: clamp(2rem, 5vw + 1rem, 3rem);
-    --h2: clamp(1.6rem, 3.5vw + 1rem, 2.25rem);
-    --h3: clamp(1.35rem, 2.5vw + 0.8rem, 1.75rem);
-    --h4: clamp(1.1rem, 1.5vw + 0.8rem, 1.25rem);
-    --h5: clamp(1rem, 1vw + 0.8rem, 1.125rem);
-    --text: 1rem;
-    --small-text: 14px;
-  }
 
   * {
     margin: 0;
@@ -52,7 +38,7 @@
     box-sizing: border-box;
   }
 
-  body {
+  #root {
     background-color: var(--color-alabastro);
     color: var(--color-carbon);
     font-family: var(--font-sans);
@@ -71,11 +57,11 @@
     color: var(--color-siena);
   }
 
-  h1 { font-size: var(--h1); }
-  h2 { font-size: var(--h2); }
-  h3 { font-size: var(--h3); }
-  h4 { font-size: var(--h4); }
-  h5 { font-size: var(--h5); }
+  h1 { font-size: var(--text-h1); }
+  h2 { font-size: var(--text-h2); }
+  h3 { font-size: var(--text-h3); }
+  h4 { font-size: var(--text-h4); }
+  h5 { font-size: var(--text-h5); }
 
   img {
     max-width: 100%;
@@ -123,7 +109,7 @@
 /* Header */
 .header-principal {
   border-bottom: 1px solid rgba(160, 82, 45, 0.3);
-  padding: var(--espaciado-interno);
+  padding: var(--spacing-interno);
   font-weight: 500;
 }
 
@@ -140,7 +126,7 @@
 
 .lista-nav {
   display: flex;
-  gap: var(--espaciado-interno);
+  gap: var(--spacing-interno);
 }
 
 .link-nav {
@@ -187,7 +173,7 @@
 
 /* Boton Primario */
 .btn-primario {
-  font-size: var(--h5);
+  font-size: var(--text-h5);
   color: var(--color-alabastro);
   background-color: var(--color-siena);
   padding: 1rem 1.5rem;
@@ -305,11 +291,11 @@
 .footer-principal {
   background-color: rgba(160, 82, 45, 0.8);
   color: var(--color-carbon);
-  padding: var(--espaciado-interno);
+  padding: var(--spacing-interno);
   padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-interno);
+  gap: var(--spacing-interno);
 }
 
 .footer-contenido {
@@ -321,13 +307,13 @@
 .footer-bloque {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-chico);
+  gap: var(--spacing-chico);
 }
 
 .footer-taller {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-interno);
+  gap: var(--spacing-interno);
 }
 
 .footer-titulo {
@@ -337,7 +323,7 @@
 }
 
 .footer-texto {
-  font-size: var(--small-text);
+  font-size: var(--text-small);
 }
 
 .footer-titulo::after {
@@ -393,9 +379,9 @@ footer address {
   outline-offset: -1px;
 }
 
-.newsletter-boton {
+.btn-secundario {
   background-color: var(--color-salvia);
-  font-size: var(--h5);
+  font-size: var(--text-h5);
   color: var(--color-carbon);
   padding: 1rem 1.5rem;
   border-radius: var(--radius-btn);
@@ -407,7 +393,7 @@ footer address {
   margin: 0 auto;
 }
 
-.newsletter-boton:hover {
+.btn-secundario:hover {
   background-color: #4F673C;
   color: var(--color-alabastro);
 }
@@ -415,14 +401,14 @@ footer address {
 .lista-canales {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-chico);
+  gap: var(--spacing-chico);
 }
 
 .item-canal {
   display: flex;
   align-items: center;
-  gap: var(--espaciado-chico);
-  font-size: var(--small-text);
+  gap: var(--spacing-chico);
+  font-size: var(--text-small);
 }
 
 .canal-icono {
@@ -437,13 +423,13 @@ footer address {
 }
 
 .footer-creditos {
-  padding-top: var(--espaciado-interno);
+  padding-top: var(--spacing-interno);
   border-top: 1px solid rgba(245, 230, 211, 0.18);
   text-align: center;
 }
 
 .footer-creditos-texto {
-  font-size: var(--small-text);
+  font-size: var(--text-small);
 }
 
 /* Media Queries */

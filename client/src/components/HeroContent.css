@@ -1,0 +1,36 @@
+/* Botones de Acción */
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Columna Izquierda: Textos y Acciones */
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 620px;
+    gap: var(--spacing-interno);
+}
+
+.hero__tagline {
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    color: var(--color-siena);
+    background-color: rgba(160, 82, 45, 0.1);
+    padding: 0.4rem 0.9rem;
+    border-radius: 1rem;
+}
+
+.hero__title {
+    font-weight: 700;
+    color: var(--color-carbon);
+    text-transform: none;
+}
+
+.hero__subtitle {
+    font-size: var(--text-small);
+}

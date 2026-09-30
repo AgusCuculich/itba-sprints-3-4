@@ -1,0 +1,62 @@
+.hero__visual {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    height: 520px;
+    margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+    .hero__visual {
+        height: 440px;
+    }
+}
+
+/* Destellos / Estrellas */
+.floating-sparkle {
+    position: absolute;
+    font-size: 1.8rem;
+    color: var(--color-siena);
+    z-index: 4;
+    user-select: none;
+    animation: gentle-float 4s ease-in-out infinite alternate;
+}
+
+.floating-sparkle--1 {
+    top: 44%;
+    left: -3%;
+    color: var(--color-salvia);
+}
+
+.floating-sparkle--2 {
+    bottom: 12%;
+    right: 22%;
+    font-size: 1.5rem;
+    color: var(--color-rosa-polvoriento);
+    animation-delay: -2s;
+}
+
+.floating-sparkle--3 {
+    top: 6%;
+    right: 8%;
+    font-size: 1.3rem;
+    color: var(--color-siena);
+    animation-delay: -1s;
+}
+
+.floating-sparkle--4 {
+    bottom: 8%;
+    right: 8%;
+    font-size: 1.6rem;
+    color: var(--color-vara-de-oro);
+    animation-delay: -3s;
+}
+
+@keyframes gentle-float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-8px) rotate(12deg);
+    }
+}
