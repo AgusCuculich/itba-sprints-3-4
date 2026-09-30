@@ -9,8 +9,8 @@ import '@fontsource/playfair-display/700.css'
 import './index.css'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
-import { Home } from './pages/Home'
-import { Layout } from './components/Layout'
+import { Home } from './pages/Home/Home'
+import { Layout } from './components/Layout/Layout'
 
 const router = createBrowserRouter([
   {

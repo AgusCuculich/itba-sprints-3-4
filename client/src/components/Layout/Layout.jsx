@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router'
-import { Header } from "./Header"
+import { NavBar } from '../Navbar/NavBar'
 
 export const Layout = () => {
     return (
         <>
-            <Header />
+            <NavBar />
             <Outlet />
         </>
     )

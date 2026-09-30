@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
-import './Header.css'
+import './NavBar.css'
 
 // Links de navegación definidos como datos: agregar una página nueva
 // es sumar una línea acá, en vez de copiar un bloque <li> entero.
@@ -20,7 +20,7 @@ const leerCarrito = () => {
   }
 }
 
-export const Header = () => {
+export const NavBar = () => {
   // Controla si el panel lateral (drawer) del carrito está abierto
   const [panelAbierto, setPanelAbierto] = useState(false)
 
