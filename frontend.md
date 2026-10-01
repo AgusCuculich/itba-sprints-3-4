@@ -150,11 +150,14 @@ Configuración única de Tailwind (v4) centralizada en `client/src/index.css`. E
 ### 4.A Consumo de la API
 - **Cliente único:** todas las llamadas HTTP van en `client/src/services/api.js` usando `fetch` nativo desenvuelto. Los componentes consumen funciones o hooks personalizados (`useProductos`).
 - **URL Base:** `import.meta.env.VITE_API_URL` contiene **solo el origen** (ej. `http://localhost:3000`). `api.js` antepone `/api/...`.
-- **Estados obligatorios:** los componentes que consumen la API deben manejar *cargando*, *error*, *vacío* y *éxito*, con copy alineado a la marca.
+- **Estados obligatorios:** los componentes que consumen la API (ej. `GET /api/productos`) deben manejar estados de *carga* y *error*, además de *vacío* y *éxito*, con copy alineado a la marca.
 
 ### 4.B JavaScript Universal y Prácticas en React
 - **Estándares modernos:** Usa `const` y `let`. Emplea funciones utilitarias de array estables (`forEach`, `map`, `filter`).
 - **Manejo de React:** Utiliza hooks nativos (`useState`, `useEffect`, `useRef`).
+- **Renderizado de listas:** Utilizar `.map()` con `keys` únicas para iterar datos.
+- **Detalle de producto:** Mostrar mediante renderizado condicional.
+- **Formularios:** Formulario de contacto debe ser controlado con `useState`.
 - **Animaciones por Scroll:** Usa la API nativa de `IntersectionObserver` dentro de un hook o `useEffect` para activar clases de transición al hacer scroll.
 - **Movimiento Reducido:** Verifica `window.matchMedia('(prefers-reduced-motion: reduce)').matches` o utiliza la variante `motion-reduce:` de Tailwind CSS para desactivar o suavizar animaciones.
 
@@ -162,6 +165,32 @@ Configuración única de Tailwind (v4) centralizada en `client/src/index.css`. E
 - **Locales (Marca):** `client/src/assets/images/`. Importar directamente en el JSX.
 - **Backend (Contenido):** El campo `imagen` de la API devuelve solo el nombre del archivo. Usar la función helper `getImageUrl(imagen)` de `api.js`.
 - **Fallback:** Si `imagen` no carga o la API falla, renderizar un contenedor estilizado con fondo `bg-alabastro` o la imagen de respaldo `src/assets/images/sin-imagen.jpg`.
+
+## 5. Estructura del front
+
+```text
+src/
+├── components/            // SOLO lo compartido entre páginas
+│   ├── Navbar/
+│   ├── Footer/
+│   ├── Button/
+│   └── StatItem/
+│
+├── pages/
+│   ├── Home/
+│   │   ├── Home.jsx       // la página que compone las secciones
+│   │   └── sections/
+│   │       ├── Hero/
+│   ├── Productos/
+│   └── Contacto/
+```
+
+### Explicación de Directorios
+
+- **`src/components/`**: Componentes globales reutilizables. Solo elementos que aparecen en múltiples vistas (ej. Navbar, Footer, botones genéricos).
+- **`src/pages/`**: Vistas principales. Cada subcarpeta representa una ruta o página completa.
+- **`src/pages/[NombrePagina]/`**: Carpeta principal de una vista (ej. `Home`, `Productos`, `Contacto`). Ensambla la página en su archivo principal (ej. `Home.jsx`).
+- **`src/pages/[NombrePagina]/sections/`**: Secciones exclusivas de esa página. Toda página compleja debe aislar sus bloques visuales aquí para mantener su archivo principal limpio y manejable.
 
 ## 5. Protocolo de Pensamiento del Agente
 
