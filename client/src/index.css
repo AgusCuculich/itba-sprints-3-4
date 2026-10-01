@@ -1,0 +1,522 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Manual de Marca Hermanos Jota */
+    --color-alabastro: #F5E6D3;
+    --color-carbon: #1A1A1A;
+    --color-siena: #A0522D;
+    --color-siena-hover: #8B4222;
+    --color-salvia: #87A96B;
+    --color-crema: #FFFDF9;
+    --color-borde: #E8DAC8;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-alabastro, #F5E6D3);
+  color: var(--color-carbon, #1A1A1A);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5E6D3;
+}
+
+h1, h2, h3, h4, h5, h6, .titulo-principal, .product-title, .product-title-detail, .product-block-title {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ==========================================================================
+   VISTA DEL CATÁLOGO (ProductList.jsx)
+   ========================================================================== */
+.main-catalogo {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.contenedor {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-catalogo {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #E8DAC8;
+}
+
+.titulo-principal {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  .titulo-principal {
+    font-size: 3.25rem;
+  }
+}
+
+.texto-hero {
+  font-size: 1.1rem;
+  color: rgba(26, 26, 26, 0.75);
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.seccion-busqueda {
+  margin-bottom: 2.5rem;
+}
+
+.busqueda-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.label-buscador {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #A0522D;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-buscador {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: 0.75rem;
+  background-color: #FFFDF9;
+  border: 1px solid #E8DAC8;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  color: #1A1A1A;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.input-buscador:focus {
+  border-color: #A0522D;
+  box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.15);
+  background-color: #FFFFFF;
+}
+
+.seccion-productos {
+  width: 100%;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.mensaje-carga {
+  font-size: 1.15rem;
+  color: rgba(26, 26, 26, 0.75);
+  font-weight: 500;
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #FFFDF9;
+  border: 1px solid #E8DAC8;
+  border-radius: 1rem;
+}
+
+/* ==========================================================================
+   TARJETA INDIVIDUAL (ProductCard.jsx)
+   ========================================================================== */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1.25rem;
+  background-color: #FFFDF9;
+  border: 1px solid #E8DAC8;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(26, 26, 26, 0.09);
+  border-color: #A0522D;
+}
+
+.product-image-container {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(245, 230, 211, 0.4);
+}
+
+.product-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #A0522D;
+}
+
+.producto-tagline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #87A96B;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0.35rem 0 0.5rem;
+  line-height: 1.25;
+}
+
+.product-price {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 1.25rem 0;
+}
+
+.product-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: #A0522D;
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-link:hover {
+  background-color: #8B4222;
+  box-shadow: 0 4px 12px rgba(160, 82, 45, 0.25);
+}
+
+/* ==========================================================================
+   VISTA DE DETALLE (ProductDetail.jsx)
+   ========================================================================== */
+.main-detalle-producto {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.migas-de-pan {
+  margin-bottom: 2rem;
+}
+
+.lista-migas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(26, 26, 26, 0.6);
+  margin: 0;
+  padding: 0;
+}
+
+.miga-link {
+  color: rgba(26, 26, 26, 0.75);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.miga-link:hover {
+  color: #A0522D;
+}
+
+.miga-separador {
+  color: rgba(26, 26, 26, 0.3);
+}
+
+.miga-actual {
+  color: #1A1A1A;
+  font-weight: 700;
+}
+
+.contenedor-detalle {
+  width: 100%;
+}
+
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 900px) {
+  .product-detail-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.product-main-image-container {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid #E8DAC8;
+  background-color: rgba(245, 230, 211, 0.4);
+}
+
+.product-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-info-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-header {
+  border-bottom: 1px solid #E8DAC8;
+  padding-bottom: 1.25rem;
+}
+
+.product-title-detail {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0.35rem 0 0.5rem 0;
+  line-height: 1.15;
+}
+
+.product-price-detail {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #A0522D;
+  margin: 0;
+}
+
+.product-block {
+  padding-top: 1.25rem;
+}
+
+.product-block-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 0.65rem 0;
+}
+
+.product-description-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.85);
+  margin: 0;
+}
+
+.product-specs-dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  background-color: #FFFDF9;
+  border: 1px solid #E8DAC8;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin: 0;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 480px) {
+  .spec-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.spec-row dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.spec-row dd {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.product-actions-block {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E8DAC8;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.quantity-input {
+  width: 4.5rem;
+  border-radius: 0.65rem;
+  border: 1px solid #E8DAC8;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: #FFFDF9;
+}
+
+.btn-purchase {
+  border-radius: 0.75rem;
+  background-color: #A0522D;
+  color: #FFFFFF;
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(160, 82, 45, 0.2);
+}
+
+.btn-purchase:hover {
+  background-color: #8B4222;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(160, 82, 45, 0.3);
+}
+
+/* ==========================================================================
+   ACORDEONES DE SUSTENTABILIDAD Y GARANTÍA
+   ========================================================================== */
+.seccion-acordeones {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #E8DAC8;
+}
+
+.acordeon-item {
+  background-color: #FFFDF9;
+  border: 1px solid #E8DAC8 !important;
+  border-radius: 1rem !important;
+  padding: 1.25rem 1.5rem !important;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.acordeon-item[open] {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.acordeon-header {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  outline: none;
+}
+
+.acordeon-header:hover {
+  color: #A0522D;
+}
+
+.acordeon-contenido {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #E8DAC8/50;
+}
+
+.acordeon-intro {
+  font-size: 0.95rem;
+  color: rgba(26, 26, 26, 0.8);
+  line-height: 1.6;
+}
+
+.acordeon-subtitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-top: 1rem;
+}
+
+.acordeon-lista {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  color: rgba(26, 26, 26, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.acordeon-lista strong {
+  color: #A0522D;
+}
