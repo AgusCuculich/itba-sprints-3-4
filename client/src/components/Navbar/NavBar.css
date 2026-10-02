@@ -1,3 +1,68 @@
+/* Header */
+.header-principal {
+  border-bottom: 1px solid rgba(160, 82, 45, 0.3);
+  padding: var(--spacing-interno);
+  font-weight: 500;
+}
+
+.header-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.img-logo {
+  height: 48px;
+  width: 48px;
+}
+
+.lista-nav {
+  display: flex;
+  gap: var(--spacing-interno);
+}
+
+.link-nav {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-nav:hover,
+.link-nav.activo {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.link-nav.activo {
+  color: var(--color-siena);
+}
+
+.contenedor-carrito {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.badge-carrito {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: var(--color-salvia);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 .overlay-carrito {
   position: fixed;
   top: 0;
@@ -194,4 +259,12 @@
 .btn-primario:disabled {
   opacity: .6; 
   cursor: not-allowed;
+}
+
+/* Media Queries */
+@media (min-width: 48em) {
+  .header-contenido {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
