@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { productos } from '../datos-productos.js';
+import { fetchProducts } from '../../services/api';
 import './ProductList.css'
 
 export const ProductList = ({ limit }) => {
@@ -9,21 +9,26 @@ export const ProductList = ({ limit }) => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        // Simulamos una carga asincrónica para mantener la lógica de tu código original
+        const controller = new AbortController();
+
         const cargarDatosAsync = async () => {
             try {
-                // Simula el delay de una llamada a API
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                setListaProductos(productos);
+                const respuesta = await fetchProducts({ signal: controller.signal });
+                setListaProductos(respuesta);
                 setCargando(false);
             } catch (err) {
+                if (err.name === 'AbortError') return;
                 setError(true);
                 setCargando(false);
             }
         };
 
         cargarDatosAsync();
+
+        return () => controller.abort();
     }, []);
+
+    const productosVisibles = limit ? listaProductos.slice(0, limit) : listaProductos;
 
     return (
         <section className="featured">
@@ -32,29 +37,29 @@ export const ProductList = ({ limit }) => {
                 <p className="featured__subtitle">Selección del taller para transformar tu espacio.</p>
             </div>
 
-            <section id="contenedor-productos" className="seccion-productos contenedor" aria-live="polite">
+            <div id="contenedor-productos" className="seccion-productos contenedor" aria-live="polite">
                 {cargando && <p className="mensaje-carga">Las piezas están saliendo del taller...</p>}
-                
+
                 {error && (
-                    <p className="mensaje-vacio">
+                    <p className="mensaje-vacio" role="alert">
                         Tuvimos un inconveniente al abrir el taller virtual. Por favor, recargá la página.
                     </p>
                 )}
 
-                {!cargando && !error && listaProductos.length === 0 && (
+                {!cargando && !error && productosVisibles.length === 0 && (
                     <p className="mensaje-vacio">
-                        Todavía no elegiste ninguna pieza. Están esperando en el taller.
+                        Por ahora no hay piezas disponibles en el taller.
                     </p>
                 )}
 
-                {!cargando && !error && listaProductos.length > 0 && (
-                    <div className="grilla-productos"> {/* Puedes ajustar la clase contenedora si usás grid/flex */}
-                        {(limit ? listaProductos.slice(0, limit) : listaProductos).map((producto) => (
+                {!cargando && !error && productosVisibles.length > 0 && (
+                    <div className="grilla-productos">
+                        {productosVisibles.map((producto) => (
                             <ProductCard key={producto.id} producto={producto} />
                         ))}
                     </div>
                 )}
-            </section>
+            </div>
         </section>
     );
 };
