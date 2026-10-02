@@ -1,8 +1,9 @@
 import { Link } from 'react-router';
 import './ProductCard.css'
+const IMAGE_URL = "http://localhost:3000/images/";
 
 export const ProductCard = ({ producto }) => {
-    const urlImagen = `/assets/images/${producto.imagen}`;
+    const urlImagen = `${IMAGE_URL}${producto.imagen}`;
 
     return (
         <article className="tarjeta-producto">

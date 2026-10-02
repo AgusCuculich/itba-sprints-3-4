@@ -1,20 +1,22 @@
+const IMAGE_URL = "http://localhost:3000/images/";
+
 export const FOUNDING_YEAR = 1960
 
 export const HERO_CARDS = [
   {
     position: 'top', // Verde Salvia
-    src: '/assets/images/sillon-copacabana.png',
-    alt: 'Sillón Copacabana en madera natural',
+    src: `${IMAGE_URL}sillon-copacabana.png`,
+    alt: 'Sillón Copacabana',
   },
   {
     position: 'right', // Rosa Polvoriento
-    src: '/assets/images/butaca-mendoza.png',
-    alt: 'Butaca Mendoza de diseño contemporáneo',
+    src: `${IMAGE_URL}butaca-mendoza.png`,
+    alt: 'Butaca Mendoza',
   },
   {
     position: 'bottom', // Vara de Oro
-    src: '/assets/images/mesa-centro-araucaria.png',
-    alt: 'Mesa de Centro Araucaria artesanal',
+    src: `${IMAGE_URL}mesa-de-centro-araucaria.png`,
+    alt: 'Mesa de Centro Araucaria',
   },
 ]
 
