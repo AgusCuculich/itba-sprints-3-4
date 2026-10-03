@@ -1,10 +1,13 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const logger = require('./middleware/logger');
 const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // 1. Archivos estáticos (imágenes de los productos)
 app.use(express.static(path.join(__dirname, 'public')));
