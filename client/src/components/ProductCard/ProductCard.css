@@ -37,23 +37,6 @@
   transform: scale(1.03);
 }
 
-/* Etiqueta Sustentable */
-.etiqueta-sustentable {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 2;
-  background-color: var(--color-salvia);
-  color: var(--color-alabastro);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 /* Info Producto */
 .info-producto {
   padding: 1.5rem;

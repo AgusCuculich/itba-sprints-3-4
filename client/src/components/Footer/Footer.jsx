@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css'; // Assuming styles are here based on active documents
-
+import { Boton } from '../Boton/Boton';
 /**
  * Componente Web Reutilizable: Footer - Hermanos Jota
  * Cumple con los requerimientos de diseño Mid-Century Modern y accesibilidad:
@@ -41,7 +41,7 @@ export const Footer = () => {
                 className="newsletter-input" 
                 placeholder="Tu correo electrónico..."
               />
-              <button type="submit" className="btn-secundario">Suscribirme</button>
+              <Boton type="submit" variante="secundario">Suscribirme</Boton>
             </div>
           </form>
         </section>
