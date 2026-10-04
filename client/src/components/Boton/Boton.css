@@ -1,15 +1,14 @@
-/* Boton Primario */
-.btn-primario {
-  font-size: var(--text-h5);
-  color: var(--color-alabastro);
-  background-color: var(--color-siena);
-  padding: 1rem 1.5rem;
+.btn-primario, .btn-secundario {
+  padding: 1rem 1.2rem;
   border-radius: var(--radius-btn);
   transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-primario {
+  color: var(--color-alabastro);
+  background-color: var(--color-siena);
   border: 1px solid var(--color-siena);
-  cursor: pointer;
-  width: fit-content;
-  margin: 0 auto;
 }
 
 .btn-primario:hover {
@@ -18,16 +17,9 @@
 }
 
 .btn-secundario {
-  font-size: var(--text-h5);
   color: var(--color-carbon);
   background-color: var(--color-salvia);
-  padding: 1rem 1.5rem;
-  border-radius: var(--radius-btn);
-  transition: background-color 0.3s ease;
   border: 1px solid var(--color-salvia);
-  cursor: pointer;
-  width: fit-content;
-  margin: 0 auto;
 }
 
 .btn-secundario:hover {

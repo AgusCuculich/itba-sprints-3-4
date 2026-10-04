@@ -37,16 +37,3 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-/* Mensajes Estado */
-.mensaje-carga,
-.mensaje-vacio {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.25rem;
-  color: var(--color-siena);
-  text-align: center;
-  padding: 3rem 1rem;
-  width: 100%;
-  grid-column: 1 / -1;
-}
