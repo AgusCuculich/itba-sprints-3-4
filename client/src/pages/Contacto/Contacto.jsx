@@ -81,7 +81,7 @@ export const Contacto = () => {
     <main className="min-h-screen bg-alabastro text-carbon py-secciones px-interno flex flex-col items-center">
       <section className="w-full max-w-2xl mt-12">
         <div className="text-center mb-10">
-          <h1 className="font-serif text-siena text-4xl md:text-5xl mb-4">
+          <h1 className="font-serif text-siena text-4xl md:text-5xl mb-4 uppercase tracking-widest">
             Contacto con el Taller
           </h1>
           <p className="font-sans text-carbon/80 text-lg">
@@ -89,8 +89,8 @@ export const Contacto = () => {
           </p>
         </div>
 
-        <div className="bg-alabastro shadow-md rounded-2xl p-6 md:p-10 border border-carbon/5">
-          <h2 className="font-serif text-siena text-2xl mb-2">Contáctanos</h2>
+        <div className="bg-white shadow-md rounded-2xl p-6 md:p-10 border border-carbon/5">
+          <h2 className="font-serif text-siena text-2xl mb-2 uppercase tracking-widest">Contáctanos</h2>
           <p className="font-sans text-carbon/80 mb-8">
             Escribinos y coordinemos una visita a la Casa Taller o consultanos por piezas a medida.
           </p>
@@ -129,7 +129,7 @@ export const Contacto = () => {
                 }`}
               />
               {errores.nombre && (
-                <span id="error-nombre" role="alert" aria-live="polite" className="text-sm text-carbon font-medium">
+                <span id="error-nombre" role="alert" aria-live="polite" className="block w-full mt-1 p-2 text-sm text-carbon font-medium bg-rosa-polvoriento/20 border border-rosa-polvoriento/50 rounded">
                   {errores.nombre}
                 </span>
               )}
@@ -154,7 +154,7 @@ export const Contacto = () => {
                 }`}
               />
               {errores.email && (
-                <span id="error-email" role="alert" aria-live="polite" className="text-sm text-carbon font-medium">
+                <span id="error-email" role="alert" aria-live="polite" className="block w-full mt-1 p-2 text-sm text-carbon font-medium bg-rosa-polvoriento/20 border border-rosa-polvoriento/50 rounded">
                   {errores.email}
                 </span>
               )}
@@ -178,7 +178,7 @@ export const Contacto = () => {
                 }`}
               ></textarea>
               {errores.mensaje && (
-                <span id="error-mensaje" role="alert" aria-live="polite" className="text-sm text-carbon font-medium">
+                <span id="error-mensaje" role="alert" aria-live="polite" className="block w-full mt-1 p-2 text-sm text-carbon font-medium bg-rosa-polvoriento/20 border border-rosa-polvoriento/50 rounded">
                   {errores.mensaje}
                 </span>
               )}
@@ -186,7 +186,7 @@ export const Contacto = () => {
 
             <button
               type="submit"
-              className="mt-2 w-full bg-siena text-alabastro font-medium py-3 px-6 rounded-lg hover:bg-carbon focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-siena focus-visible:ring-offset-alabastro transition-colors"
+              className="mt-2 w-full bg-siena text-alabastro font-medium py-3 px-6 rounded-lg border border-siena hover:bg-transparent hover:text-siena focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-siena transition-colors"
             >
               Enviar
             </button>
