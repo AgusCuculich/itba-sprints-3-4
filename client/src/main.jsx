@@ -11,12 +11,14 @@ import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 import { Home } from './pages/Home/Home'
 import { Layout } from './components/Layout/Layout'
+import { Producto } from './pages/Producto/Producto'
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
+      { path: '/producto/:id', element: <Producto /> }
       // { path: '/productos', element: <Productos /> },
       // { path: '/contacto', element: <Contacto /> },
     ],
