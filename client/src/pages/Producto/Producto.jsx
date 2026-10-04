@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useParams, useLocation, useOutletContext } from 'react-router';
 import { fetchProductById } from '../../services/api.js';
 import { Boton } from '../../components/Boton/Boton.jsx';
 import { Acordeones } from './sections/Acordeones/Acordeones.jsx';
@@ -10,6 +10,9 @@ import './Producto.css';
 export const Producto = () => {
     const { id } = useParams();
     const desdeInicio = useLocation().state?.desde === '/';
+    // Función que viene del Layout (dueño del estado del carrito)
+    const { agregarAlCarrito } = useOutletContext();
+
     const [producto, setProducto] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(false);
@@ -54,7 +57,7 @@ export const Producto = () => {
             <main>
                 <section className="contenedor-detalle-error">
                     <div className="mensaje-estado-detalle" role="alert">
-                        <h2>No encontramos la pieza seleccionada</h2>
+                        <h2 className="h2-producto">No encontramos la pieza seleccionada</h2>
                         <p>Podés explorar todas las piezas disponibles en nuestro catálogo.</p>
                         <Boton to="/productos">Volver al Catálogo</Boton>
                     </div>
@@ -66,7 +69,12 @@ export const Producto = () => {
     return (
         <main>
             <Breadcrumb nombre={producto.nombre} desdeInicio={desdeInicio} />
-            <Detalle producto={producto} cantidad={cantidad} setCantidad={setCantidad} />
+            <Detalle
+                producto={producto}
+                cantidad={cantidad}
+                setCantidad={setCantidad}
+                agregarAlCarrito={agregarAlCarrito}
+            />
             <Acordeones />
         </main>
     );

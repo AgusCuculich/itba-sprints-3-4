@@ -8,7 +8,7 @@ export const EspecificacionesTecnicas = ({ especificaciones }) => {
 
     return (
         <section className="seccion-especificaciones" aria-labelledby="titulo-especificaciones">
-            <h2 id="titulo-especificaciones">Especificaciones Técnicas</h2>
+            <h2 className='h2-producto' id="titulo-especificaciones">Especificaciones Técnicas</h2>
             <dl className="lista-especificaciones">
                 {Object.entries(especificaciones).map(([clave, valor]) => (
                     <div className="item-especificacion" key={clave}>

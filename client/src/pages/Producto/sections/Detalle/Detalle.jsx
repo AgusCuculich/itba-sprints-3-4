@@ -1,12 +1,29 @@
+import { useEffect, useState } from 'react';
 import { Boton } from '../../../../components/Boton/Boton.jsx';
 import { ControlCantidad } from './ControlCantidad.jsx';
 import { EspecificacionesTecnicas } from './EspecificacionesTecnicas.jsx';
-const IMAGE_URL = "http://localhost:3000/images/";
-import './Detalle.css'
+import './Detalle.css';
 
-export const Detalle = ({ producto, cantidad, setCantidad }) => {
+const IMAGE_URL = 'http://localhost:3000/images/';
+
+export const Detalle = ({ producto, cantidad, setCantidad, agregarAlCarrito }) => {
+    const [agregado, setAgregado] = useState(false);
     const { nombre, imagen, precio, descripcion, especificaciones, sustentable } = producto;
     const materialAlt = especificaciones?.materiales || especificaciones?.estructura || 'diseño exclusivo';
+
+    // El mensaje de confirmación se apaga solo a los 2 segundos
+    useEffect(() => {
+        if (!agregado) return;
+        const timer = setTimeout(() => setAgregado(false), 2000);
+        return () => clearTimeout(timer);
+    }, [agregado]);
+
+    const handleAgregar = () => {
+        const id = producto.id ?? producto._id;
+        // Al carrito solo van los campos que usa el panel
+        agregarAlCarrito({ id, nombre, precio, imagen }, cantidad);
+        setAgregado(true);
+    };
 
     return (
         <section className="contenedor-detalle">
@@ -39,8 +56,9 @@ export const Detalle = ({ producto, cantidad, setCantidad }) => {
 
                     <div className="bloque-acciones-compra">
                         <ControlCantidad cantidad={cantidad} onChange={setCantidad} />
-                        {/* TODO: conectar con el carrito */}
-                        <Boton className="btn-compra-detalle">Sumalo a tu hogar</Boton>
+                        <Boton className="btn-compra-detalle" onClick={handleAgregar}>
+                            {agregado ? '¡Agregado al carrito!' : 'Sumalo a tu hogar'}
+                        </Boton>
                     </div>
                 </div>
 

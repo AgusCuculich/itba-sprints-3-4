@@ -35,7 +35,7 @@ export const Acordeones = () => (
     <section className="seccion-acordeones" aria-label="Información de sustentabilidad y garantía">
         <details className="acordeon-item" name="acordeon-info">
             <summary className="acordeon-header">
-                <h2>Sustentabilidad y Materiales</h2>
+                <h2 className='h2-producto'>Sustentabilidad y Materiales</h2>
                 <span className="acordeon-icono" aria-hidden="true"></span>
             </summary>
             <div className="acordeon-contenido">
@@ -72,7 +72,7 @@ export const Acordeones = () => (
 
         <details className="acordeon-item" name="acordeon-info">
             <summary className="acordeon-header">
-                <h2>Programa Herencia Viva</h2>
+                <h2 className='h2-producto'>Programa Herencia Viva</h2>
                 <span className="acordeon-icono" aria-hidden="true"></span>
             </summary>
             <div className="acordeon-contenido">
