@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Boton } from '../Boton/Boton';
 import './ProductCard.css'
 const IMAGE_URL = "http://localhost:3000/images/";
 
@@ -20,13 +20,12 @@ export const ProductCard = ({ producto }) => {
             </div>
             <div className="info-producto">
                 <h2 className="nombre-producto">{producto.nombre}</h2>
-                <Link 
-                    to={`/producto/${producto.id}`} 
-                    className="btn-primario"
+                <Boton 
+                    to={`/producto/${producto.id}`}
                     aria-label={`Conocer más detalles sobre ${producto.nombre}`}
                 >
                     Conocer más detalles
-                </Link>
+                </Boton>
             </div>
         </article>
     );

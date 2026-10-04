@@ -1,0 +1,54 @@
+.h2-producto {
+  font-size: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Controles de Compra (Contador + Botón CTA a la par)
+   -------------------------------------------------------------------------- */
+.bloque-acciones-compra {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Estado de Error / Producto No Encontrado
+   -------------------------------------------------------------------------- */
+.mensaje-estado-detalle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: var(--spacing-interno);
+}
+
+.mensaje-estado-detalle a {
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Media Queries Responsive
+   ========================================================================== */
+
+@media (min-width: 64em) { /* 1024px+ - Desktop */
+  .contenedor-detalle {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+  }
+
+  .contenedor-detalle-error {
+    flex: 1;
+  }
+
+  .envoltura-imagen-grande {
+    aspect-ratio: 1 / 1;
+    padding: 2.5rem;
+  }
+
+  .titulo-producto-detalle {
+    font-size: 2.75rem;
+  }
+}

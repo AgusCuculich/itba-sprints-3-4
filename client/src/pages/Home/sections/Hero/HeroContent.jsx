@@ -1,10 +1,10 @@
-import { Link } from 'react-router'
+import { Boton } from '../../../../components/Boton/Boton'
 import { HeroStats } from './HeroStats'
 import './HeroContent.css'
 const HeroActions = () => (
   <div className="hero__actions">
-    <Link to="/productos" className="btn-primario">Explorar Catálogo</Link>
-    <Link to="/contacto" className="btn-secundario">Conocer el Taller</Link>
+    <Boton to="/productos">Explorar Catálogo</Boton>
+    <Boton to="/contacto" variante="secundario">Conocer el Taller</Boton>
   </div>
 )
 

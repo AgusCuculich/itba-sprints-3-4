@@ -1,0 +1,99 @@
+/* --------------------------------------------------------------------------
+   Grilla Principal de la Ficha de Producto
+   -------------------------------------------------------------------------- */
+.contenedor-detalle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   Columna Visual (Fotografía del mueble y Badge)
+   -------------------------------------------------------------------------- */
+.columna-imagen-detalle {
+  position: relative;
+  background-color: rgba(196, 122, 109, 0.05);
+  border: 1px solid rgba(160, 82, 45, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.envoltura-imagen-grande {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.imagen-detalle-grande {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12));
+  transition: transform 0.4s ease;
+}
+
+.imagen-detalle-grande:hover {
+  transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   Columna de Información, Precios y Acciones
+   -------------------------------------------------------------------------- */
+.columna-info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Bloque Superior: Título, Precio, Cuotas y Controles de Compra */
+.bloque-encabezado-producto {
+  border-bottom: 1px solid rgba(160, 82, 45, 0.2);
+  padding-bottom: 1.25rem;
+}
+
+.titulo-producto-detalle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  color: var(--siena-tostado);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.precio-producto-detalle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--negro-carbon);
+}
+
+.cuotas-texto {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--verde-salvia);
+  margin-top: 0.25rem;
+}
+
+/* Botón CTA principal en la ficha de producto */
+.btn-compra-detalle {
+  width: 100%;
+  max-height: 48px;
+  padding: 0 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Bloque de Contenido Adicional (Descripción y Especificaciones)
+   -------------------------------------------------------------------------- */
+.bloque-contenido-adicional {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

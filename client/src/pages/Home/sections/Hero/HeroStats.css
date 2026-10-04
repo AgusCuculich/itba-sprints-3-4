@@ -1,14 +1,27 @@
 /* Métricas / Stats */
 .hero__stats {
     display: flex;
-    align-items: center;
-    gap: 1.8rem;
-    padding-top: 1.8rem;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(160, 82, 45, 0.2);
     width: 100%;
 }
 
 .hero__stats > li + li {
-  padding-left: 2rem;
-  border-left: 1px solid rgba(26, 26, 26, 0.15);
+    padding-left: 0.5rem;
+    border-left: 1px solid rgba(26, 26, 26, 0.15);
+}
+
+@media (min-width: 576px) {
+    .hero__stats {
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.8rem;
+    }
+    .hero__stats > li + li {
+        padding-left: 2rem;
+    }
 }

@@ -38,16 +38,18 @@
     box-sizing: border-box;
   }
 
-  #root {
+  html, body {
     background-color: var(--color-alabastro);
     color: var(--color-carbon);
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  #root {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-secciones);
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -55,6 +57,7 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-siena);
+    font-weight: 700;
   }
 
   h1 { font-size: var(--text-h1); }
@@ -89,6 +92,9 @@
 
   button {
     font-weight: 500;
+    cursor: pointer;
+    font-size: var(--text-h5);
+    width: fit-content;
   }
 
   ::selection {
@@ -97,48 +103,38 @@
   }
 }
 
-/* ==========================================================================
-   Clases Globales / Componentes Base
-   ========================================================================== */
 .contenedor {
   width: 90%;
   max-width: 1366px;
   margin: 0 auto;
 }
 
-/* Boton Primario */
-.btn-primario {
-  font-size: var(--text-h5);
-  color: var(--color-alabastro);
-  background-color: var(--color-siena);
-  padding: 1rem 1.5rem;
-  border-radius: var(--radius-btn);
-  transition: background-color 0.3s ease;
-  border: 1px solid var(--color-siena);
-  cursor: pointer;
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.btn-primario:hover {
-  background-color: transparent;
-  color: var(--color-siena);
-}
-
-.btn-secundario {
-  font-size: var(--text-h5);
-  color: var(--color-carbon);
+/* Etiqueta Sustentable */
+.etiqueta-sustentable {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
   background-color: var(--color-salvia);
-  padding: 1rem 1.5rem;
-  border-radius: var(--radius-btn);
-  transition: background-color 0.3s ease;
-  border: 1px solid var(--color-salvia);
-  cursor: pointer;
-  width: fit-content;
-  margin: 0 auto;
+  color: var(--color-alabastro);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.btn-secundario:hover {
-  background-color: #4F673C;
-  color: var(--color-alabastro);
+/* Mensajes Estado */
+.mensaje-carga,
+.mensaje-vacio {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-siena);
+  text-align: center;
+  padding: 3rem 1rem;
+  width: 100%;
+  grid-column: 1 / -1;
 }
