@@ -1,0 +1,30 @@
+/* --------------------------------------------------------------------------
+   Migas de pan / Navegación secundaria
+   -------------------------------------------------------------------------- */
+
+.lista-migas {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  color: var(--color-carbon);
+}
+
+.miga-link {
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.miga-link:hover {
+  text-decoration: underline;
+}
+
+.miga-separador {
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.miga-actual {
+  font-weight: 300;
+  color: var(--color-siena);
+}

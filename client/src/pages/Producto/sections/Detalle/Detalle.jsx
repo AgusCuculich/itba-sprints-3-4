@@ -1,0 +1,54 @@
+import { Boton } from '../../../../components/Boton/Boton.jsx';
+import { ControlCantidad } from './ControlCantidad.jsx';
+import { EspecificacionesTecnicas } from './EspecificacionesTecnicas.jsx';
+const IMAGE_URL = "http://localhost:3000/images/";
+import './Detalle.css'
+
+export const Detalle = ({ producto, cantidad, setCantidad }) => {
+    const { nombre, imagen, precio, descripcion, especificaciones, sustentable } = producto;
+    const materialAlt = especificaciones?.materiales || especificaciones?.estructura || 'diseño exclusivo';
+
+    return (
+        <section className="contenedor-detalle">
+            <div className="columna-imagen-detalle">
+                <div className="envoltura-imagen-grande">
+                    <img
+                        src={`${IMAGE_URL}${imagen}`}
+                        alt={`${nombre} - ${materialAlt}`}
+                        className="imagen-detalle-grande"
+                    />
+                    {sustentable && (
+                        <span className="etiqueta-sustentable">Certificación FSC / Eco</span>
+                    )}
+                </div>
+            </div>
+
+            <div className="columna-info-detalle">
+                <div className="bloque-encabezado-producto">
+                    <h1 className="titulo-producto-detalle">{nombre}</h1>
+                    {precio ? (
+                        <>
+                            <div className="precio-producto-detalle">$ {precio.toLocaleString('es-AR')}</div>
+                            <p className="cuotas-texto">
+                                3 cuotas sin interés de $ {Math.round(precio / 3).toLocaleString('es-AR')}
+                            </p>
+                        </>
+                    ) : (
+                        <p className="cuotas-texto">Consultá el precio con el taller.</p>
+                    )}
+
+                    <div className="bloque-acciones-compra">
+                        <ControlCantidad cantidad={cantidad} onChange={setCantidad} />
+                        {/* TODO: conectar con el carrito */}
+                        <Boton className="btn-compra-detalle">Sumalo a tu hogar</Boton>
+                    </div>
+                </div>
+
+                <div className="bloque-contenido-adicional">
+                    {descripcion && <p>{descripcion}</p>}
+                    <EspecificacionesTecnicas especificaciones={especificaciones} />
+                </div>
+            </div>
+        </section>
+    );
+};

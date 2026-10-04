@@ -1,0 +1,45 @@
+.control-cantidad {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-siena);
+  border-radius: 4px;
+  background-color: var(--color-alabastro);
+  overflow: hidden;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.btn-cantidad {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-siena);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cantidad:hover {
+  background-color: rgba(160, 82, 45, 0.1);
+}
+
+/* Selector numérico interactivo */
+.input-cantidad {
+  width: 44px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--negro-carbon);
+}
+
+.input-cantidad:focus {
+  outline: none;
+}
