@@ -57,7 +57,7 @@ export const Producto = () => {
             <main>
                 <section className="contenedor-detalle-error">
                     <div className="mensaje-estado-detalle" role="alert">
-                        <h2 className="h2-producto">No encontramos la pieza seleccionada</h2>
+                        <h2>No encontramos la pieza seleccionada</h2>
                         <p>Podés explorar todas las piezas disponibles en nuestro catálogo.</p>
                         <Boton to="/productos">Volver al Catálogo</Boton>
                     </div>

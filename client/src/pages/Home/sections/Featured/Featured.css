@@ -1,0 +1,18 @@
+/* DESTACADOS*/
+.featured {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--text-small);
+}
+
+.featured__header {
+    text-align: center;
+    width: fit-content;
+}
+
+.featured__subtitle {
+    font-size: var(--small-text);
+}

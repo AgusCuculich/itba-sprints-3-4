@@ -35,35 +35,28 @@ export const ProductList = ({ limit, terminoBusqueda = '' }) => {
     const productosVisibles = limit ? productosFiltrados.slice(0, limit) : productosFiltrados;
 
     return (
-        <section className="featured">
-            <div className="featured__header">
-                <h2 className="featured__title">PIEZAS DESTACADAS</h2>
-                <p className="featured__subtitle">Selección del taller para transformar tu espacio.</p>
-            </div>
+        <div id="contenedor-productos" className="seccion-productos contenedor" aria-live="polite">
+            {cargando && <p className="mensaje-carga">Las piezas están saliendo del taller...</p>}
 
-            <div id="contenedor-productos" className="seccion-productos contenedor" aria-live="polite">
-                {cargando && <p className="mensaje-carga">Las piezas están saliendo del taller...</p>}
+            {error && (
+                <p className="mensaje-vacio" role="alert">
+                    Tuvimos un inconveniente al abrir el taller virtual. Por favor, recargá la página.
+                </p>
+            )}
 
-                {error && (
-                    <p className="mensaje-vacio" role="alert">
-                        Tuvimos un inconveniente al abrir el taller virtual. Por favor, recargá la página.
-                    </p>
-                )}
+            {!cargando && !error && productosVisibles.length === 0 && (
+                <p className="mensaje-vacio">
+                    Por ahora no hay piezas disponibles en el taller.
+                </p>
+            )}
 
-                {!cargando && !error && productosVisibles.length === 0 && (
-                    <p className="mensaje-vacio">
-                        Por ahora no hay piezas disponibles en el taller.
-                    </p>
-                )}
-
-                {!cargando && !error && productosVisibles.length > 0 && (
-                    <div className="grilla-productos">
-                        {productosVisibles.map((producto) => (
-                            <ProductCard key={producto.id} producto={producto} />
-                        ))}
-                    </div>
-                )}
-            </div>
-        </section>
+            {!cargando && !error && productosVisibles.length > 0 && (
+                <div className="grilla-productos">
+                    {productosVisibles.map((producto) => (
+                        <ProductCard key={producto.id} producto={producto} />
+                    ))}
+                </div>
+            )}
+        </div>
     );
 };

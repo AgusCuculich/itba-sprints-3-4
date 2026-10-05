@@ -1,11 +1,11 @@
 import { Hero } from './sections/Hero/Hero'
-import { ProductList } from '../../components/ProductList/ProductList'
+import { Featured } from './sections/Featured/Featured'
 
 export const Home = () => {
   return (
     <main>
       <Hero />
-      <ProductList limit={3}/>
+      <Featured />
     </main>
   )
 }

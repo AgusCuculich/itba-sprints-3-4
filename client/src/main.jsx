@@ -13,7 +13,7 @@ import { Home } from './pages/Home/Home'
 import { Layout } from './components/Layout/Layout'
 import { Contacto } from './pages/Contacto/Contacto.jsx'
 import { Producto } from './pages/Producto/Producto.jsx'
-import { Productos } from './pages/Catalogo/Productos.jsx'
+import { Productos } from './pages/Productos/Productos.jsx'
 
 const router = createBrowserRouter([
   {
