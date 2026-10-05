@@ -7,7 +7,7 @@ Proyecto desarrollado para la diplomatura / curso de desarrollo web de **ITBA** 
 ## 👥 Integrantes del Equipo
 
 - **Agustina Cuculich**
-**Rodrigo Antelo**
+- **Rodrigo Antelo**
 - **Delfina Moschella**
 - **Nancy Elliff**
 

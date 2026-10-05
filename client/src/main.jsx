@@ -12,15 +12,16 @@ import { RouterProvider } from 'react-router/dom'
 import { Home } from './pages/Home/Home'
 import { Layout } from './components/Layout/Layout'
 import { Contacto } from './pages/Contacto/Contacto.jsx'
-import { Producto } from './pages/Producto/Producto'
+import { Producto } from './pages/Producto/Producto.jsx'
+import { Productos } from './pages/Catalogo/Productos.jsx'
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
-      { path: '/producto/:id', element: <Producto /> }
-      // { path: '/productos', element: <Productos /> },
+      { path: '/producto/:id', element: <Producto /> },
+      { path: '/productos', element: <Productos/> },
       { path: '/contacto', element: <Contacto /> },
     ],
   },

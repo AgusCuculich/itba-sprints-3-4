@@ -3,7 +3,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { fetchProducts } from '../../services/api';
 import './ProductList.css'
 
-export const ProductList = ({ limit }) => {
+export const ProductList = ({ limit, terminoBusqueda = '' }) => {
     const [listaProductos, setListaProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(false);
@@ -28,7 +28,11 @@ export const ProductList = ({ limit }) => {
         return () => controller.abort();
     }, []);
 
-    const productosVisibles = limit ? listaProductos.slice(0, limit) : listaProductos;
+    const productosFiltrados = listaProductos.filter((prod) => 
+        prod.nombre.toLowerCase().includes(terminoBusqueda.toLowerCase())
+    );
+
+    const productosVisibles = limit ? productosFiltrados.slice(0, limit) : productosFiltrados;
 
     return (
         <section className="featured">
