@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const logger = require('./middleware/logger');
 const productRoutes = require('./routes/productRoutes');
+const { connectToMongoDB, disconnectFromMongoDB } = require('./config/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -39,6 +40,23 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// Iniciar conexión y luego servidor
+async function startServer() {
+  await connectToMongoDB();
+
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
+
+startServer();
+
+// Cierre graceful al presionar Ctrl+C o apagar proceso
+process.on('SIGINT', async () => {
+  await disconnectFromMongoDB();
+  process.exit(0);
+});
+process.on('SIGTERM', async () => {
+  await disconnectFromMongoDB();
+  process.exit(0);
 });
