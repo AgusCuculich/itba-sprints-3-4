@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-async function connectToMongoDB() {
+export async function connectToMongoDB() {
     try {
         await mongoose.connect(process.env.MONGO_URI);
         console.log("Conectado a MongoDB");
@@ -10,9 +10,7 @@ async function connectToMongoDB() {
     }
 }
 
-async function disconnectFromMongoDB() {
+export async function disconnectFromMongoDB() {
     await mongoose.connection.close();
     console.log("Desconectado de MongoDB");
 }
-
-module.exports = { connectToMongoDB, disconnectFromMongoDB };

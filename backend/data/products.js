@@ -167,4 +167,4 @@ const productos = [
     }
 ];
 
-module.exports = productos;
+export default productos;

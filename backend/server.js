@@ -1,9 +1,9 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const logger = require('./middleware/logger');
-const productRoutes = require('./routes/productRoutes');
-const { connectToMongoDB, disconnectFromMongoDB } = require('./config/db');
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import logger from './middleware/logger.js';
+import productRoutes from './routes/productRoutes.js';
+import { connectToMongoDB, disconnectFromMongoDB } from './config/db.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 // 1. Archivos estáticos (imágenes de los productos)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(import.meta.dirname, 'public')));
 
 // 2. Parser JSON
 app.use(express.json());

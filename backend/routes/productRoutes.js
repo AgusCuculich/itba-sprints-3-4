@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import products from '../data/products.js';
+
 const router = express.Router();
-const products = require('../data/products');
 
 // GET / - Listado completo de productos
 router.get('/', async (req, res, next) => {
@@ -47,4 +48,4 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;
