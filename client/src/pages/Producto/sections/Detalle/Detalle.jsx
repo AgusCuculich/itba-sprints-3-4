@@ -19,7 +19,7 @@ export const Detalle = ({ producto, cantidad, setCantidad, agregarAlCarrito }) =
     }, [agregado]);
 
     const handleAgregar = () => {
-        const id = producto.id ?? producto._id;
+        const id = producto.slug ?? producto._id;
         // Al carrito solo van los campos que usa el panel
         agregarAlCarrito({ id, nombre, precio, imagen }, cantidad);
         setAgregado(true);

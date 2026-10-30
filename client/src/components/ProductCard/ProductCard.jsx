@@ -20,8 +20,8 @@ export const ProductCard = ({ producto }) => {
             </div>
             <div className="info-producto">
                 <h2 className="nombre-producto">{producto.nombre}</h2>
-                <Boton 
-                    to={`/producto/${producto.id}`}
+                <Boton
+                    to={`/producto/${producto.slug}`}
                     aria-label={`Conocer más detalles sobre ${producto.nombre}`}
                 >
                     Conocer más detalles
